@@ -1,0 +1,13 @@
+#! /bin/sh
+if [ $# -gt 1 ]; then
+	echo "only port number is need.!"
+	exit 1
+fi
+
+port=8000
+if [ $# -eq 1 ];then
+	port=$1
+fi
+
+echo "start server, port:${port}"
+python -m SimpleHTTPServer $port
