@@ -98,10 +98,11 @@ require ["jquery","underscore","speakClient","config"],($, u, speakClient, confi
       localStorage.setItem "Bingo.RESULTS", @RESULTS.join(",")
 
     getFromStorage :  =>
-      numbers = localStorage.getItem("Bingo.NUMBERS") || ""
-      @NUMBERS = numbers.split(",")
-      if @NUMBERS is [""]
+      numbers = localStorage.getItem("Bingo.NUMBERS")
+      if not numbers
         @NUMBERS.push num for num in [1..75]
+      else
+        @NUMBERS = numbers.split(",")
       results = localStorage.getItem("Bingo.RESULTS") || ""
       @RESULTS = results.split(",")
 
